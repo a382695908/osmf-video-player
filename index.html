@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>OSMF Player Demo</title>
+	<meta name="description" content="A customizable video player built with Adobe's OSMF framework.">
+	<meta name="author" content="Jonathan McLaughlin">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script> 
+	<script type="text/javascript">
+		google.load("jquery", "1.4.2");
+		google.load("jqueryui", "1.8.4");
+		google.load("swfobject", "2.2");		
+	</script>
+	<script type="text/javascript" src="js/jquery.mcvideo.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+<div id="container">
+	<div id="header">
+    	<h1>OSMF Video Player</h1>
+        <div class="column">
+            <div class="info">
+        		<h2><a href="#">+ Variables <em>(click to open)</em></a></h2>
+                <ul>
+                	<li><strong>videoURL</strong> : String<br />
+                		<p>Provides a URL to the video file. <strong>REQUIRED</strong></p>
+                    </li>
+                	<li><strong>posterURL</strong> : String<br />
+                		<p>Provides a URL to the poster image/swf. If not provided, video controls will show.</p>
+                    </li>
+                	<li><strong>autoPlay</strong> : Boolean<br />
+                		<p>If true, video will begin playing when loaded. This is overridden if posterURL is provided.  <em>Default = false</em></p>
+                    </li>
+                	<li><strong>hideControls</strong> : String<br />
+                		<p>Provides when to hide video controls.  Available options are ALWAYS, HOVER, or NEVER.  <em>Default = NEVER</em></p>
+                    </li>
+                	<li><strong>hideDelay</strong> : int<br />
+                		<p>Number of seconds before controls are hidden. Requires hideControls to be set to HOVER.  <em>Default = 5</em></p>
+                    </li>
+                	<li><strong>videoScale</strong> : String<br />
+                		<p>Scale mode of video file.  Available options are LETTERBOX (always fits video inside), NONE (native size of the video file), STRETCH (stretches video to fill), ZOOM (scales video to fill).  <em>Default = LETTERBOX</em></p>
+                    </li>
+                	<li><strong>buttonColor</strong> : uint<br />
+                		<p>Color of video control buttons.  <em>Default = 0xFFFFFF</em></p>
+                    </li>
+                	<li><strong>controlBarColor</strong> : uint<br />
+                		<p>Color of video control background.  <em>Default = 0x000000</em></p>
+                    </li>
+                	<li><strong>timelineColor</strong> : uint<br />
+                		<p>Color of video control timeline and time text.  <em>Default = 0xFFFFFF</em></p>
+                    </li>
+                </ul>
+                <h2><a href="#">+ Keyboard Shortcuts <em>(click to open)</em></a></h2>
+                <ul>
+                	<li><strong>Spacebar</strong> : Play/Pause</li>
+                    <li><strong>Left/Right Arrows</strong> : Seek</li>
+                    <li><strong>Up/Down Arrows</strong> : Volume</li>
+                    <li><strong>M Key</strong> : Mute</li>
+                    <li><strong>F Key</strong> : Fullscreen</li>
+                </ul>
+                <h2><a href="#">+ Video List <em>(click to open)</em></a></h2>
+                <ul class="video-list">
+                	<li><a href="#video-01"><strong>Video 01</strong> : Default</a></li>
+                    <li><a href="#video-02"><strong>Video 02</strong> : Poster Image, Hide Controls</a></li>
+                    <li><a href="#video-03"><strong>Video 03</strong> : Custom Colors</a></li>
+                    <li><a href="#video-04"><strong>Video 04</strong> : No Controls</a></li>
+                    <li><a href="#video-05"><strong>Video 05</strong> : HTML5</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="video">
+        <div id="video-01" class="video-player">
+            <video controls="controls" width="640" height="380">
+                <source src="video/oneill.ogg" type="video/ogg" />
+                <source src="video/oneill.mp4" type="video/mp4" />
+            </video>
+        </div>
+        <h3>Video 01</h3>
+        <p>This video contains everything set to default.</p>
+        <p class="flashvars">FlashVars: <span>videoURL:"../videos/oneill.mp4"</span></p>
+    </div>
+    <div class="video">
+        <div id="video-02" class="video-player">
+            <video controls="controls" width="640" height="380">
+                <source src="video/oneill.mp4" type="video/mp4" />
+                <source src="video/oneill.ogg" type="video/ogg" />
+                <img src="images/no-html5.jpg" width="640" height="380" alt="NO HTML5" />
+            </video>
+        </div>
+        <h3>Video 02</h3>
+        <p>This video contains a poster image, videoScale set to ZOOM, and controls set to hide after 3 seconds.</p>
+        <p class="flashvars">FlashVars: <span>videoURL:"../video/oneill.mp4", posterURL:"posters/image.jpg", hideControls:"hover", hideDelay:"3", videoScale:"zoom"</span></p>
+    </div>
+    <div class="video">
+        <div id="video-03" class="video-player">
+            <video controls="controls" width="640" height="380">
+                <source src="video/oneill.mp4" type="video/mp4" />
+                <source src="video/oneill.ogg" type="video/ogg" />
+                <img src="images/no-html5.jpg" width="640" height="380" alt="NO HTML5" />
+            </video>
+        </div>
+        <h3>Video 03</h3>
+        <p>This video contains custom colors and videoScale set to ZOOM.</p>
+        <p class="flashvars">FlashVars: <span>videoURL:"../video/oneill.mp4", videoScale:"zoom", buttonColor:"0xFFFFFF", controlBarColor:"0x5C9A58", timelineColor:"0x000000"</span></p>
+    </div>
+    <div class="video">
+        <div id="video-04" class="video-player">
+            <video controls="controls" width="640" height="380">
+                <source src="video/oneill.mp4" type="video/mp4" />
+                <source src="video/oneill.ogg" type="video/ogg" />
+                <img src="images/no-html5.jpg" width="640" height="380" alt="NO HTML5" />
+            </video>
+        </div>
+        <h3>Video 04</h3>
+        <p>This video has controls set to always hide.  See keyboard shortcuts at the top of the page.</p>
+        <p class="flashvars">FlashVars: <span>videoURL:"../video/oneill.mp4", hideControls:"always", videoScale:"zoom"</span></p>
+    </div>
+    <div class="video">
+        <div id="video-05" class="video-player">
+            <video id="html-video" controls="controls" width="640" height="380">
+                <source src="video/oneill.mp4" type="video/mp4" />
+                <source src="video/oneill.ogg" type="video/ogg" />
+                <img src="images/no-html5.jpg" width="640" height="380" alt="NO HTML5" />
+            </video>
+        </div>
+        <h3>Video 05</h3>
+        <p>This video is an HTML5 version.</p>
+        <p class="flashvars">FlashVars: <span>NONE!</span></p>
+    </div>
+    <div id="footer">
+    	<a class="top" href="#">Back to Top</a>
+    	<div class="clear"></div>
+    </div>
+</div>
+</body>
+</html>
